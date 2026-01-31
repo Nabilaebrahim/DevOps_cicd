@@ -1,6 +1,8 @@
 name: "PR Validation - Checkov Scan"
 
 on:
+  push:
+    branches: [ "main" ]  # to get the Checkov file in security tap
   pull_request:
     branches: [ "main" ]
 
