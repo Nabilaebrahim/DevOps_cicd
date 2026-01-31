@@ -1,0 +1,28 @@
+name: "PR Validation - Checkov Scan"
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  checkov_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Checkov Scan
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          framework: dockerfile
+          output_format: cli,html
+          output_path: results
+          
+      - name: Upload Scan Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkov-report
+          path: results/checkov-report.html
