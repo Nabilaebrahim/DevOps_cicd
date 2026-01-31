@@ -71,4 +71,4 @@ jobs:
           docker pull ${{ vars.DOCKERHUB_USERNAME }}/my-app:latest
           docker rm -f my-app || true
           
-          docker run -d --name my-app -p 8080:80 ${{ vars.DOCKERHUB_USERNAME }}/my-app:latest
+          docker run -d --name my-app -p 8081:80 ${{ vars.DOCKERHUB_USERNAME }}/my-app:latest
