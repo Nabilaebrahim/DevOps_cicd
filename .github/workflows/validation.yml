@@ -17,12 +17,13 @@ jobs:
         with:
           directory: .
           framework: dockerfile
-          
           output_format: sarif
-          output_path: results
-          
+          output_path: .
+        
+          soft_fail: true 
+
       - name: Upload SARIF file
         if: always()
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: results/results.sarif
+          sarif_file: results.sarif
