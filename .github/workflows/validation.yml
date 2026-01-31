@@ -17,12 +17,12 @@ jobs:
         with:
           directory: .
           framework: dockerfile
-          output_format: cli,html
+          
+          output_format: sarif
           output_path: results
           
-      - name: Upload Scan Report
+      - name: Upload SARIF file
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          name: checkov-report
-          path: results/checkov-report.html
+          sarif_file: results/results.sarif
