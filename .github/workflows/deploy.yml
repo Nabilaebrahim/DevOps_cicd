@@ -36,7 +36,7 @@ jobs:
   deploy-to-runner:
     needs: build-and-push
     if: github.event.inputs.deploy_to == 'runner'
-    runs-on: self-hosted
+    runs-on: [self-hosted, local-vm]
     steps:
       - name: Deploy on Local Runner
         run: |
